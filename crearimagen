@@ -1,0 +1,10 @@
+FROM rrojano/spring-boot:latest
+WORKDIR /app
+COPY SaludarDatos/pom.xml pom.xml
+COPY SaludarDatos/mvnw mvnw
+COPY SaludarDatos/.mvn .mvn
+COPY SaludarDatos/src src
+RUN chmod +x mvnw
+RUN ./mvnw package -Dskiptests
+CMD ["java", "-jar", "target/SaludarDatos-0.0.1-SNAPSHOT.jar"]
+
